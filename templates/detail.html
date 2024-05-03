@@ -1,0 +1,27 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <h1 style="margin-top: 60px; margin-bottom: 60px">Detail Page</h1>
+        <div class="col">
+            <div class="card h-100">
+                <img src="{{ food.image.url }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{ food.name}}</h5>
+                    <p class="card-text">{{ food.description }}</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">{{ food.created_at }}</small>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Category: {{ food.category }}</small>
+                </div>
+                <div class="card-footer">
+                    <h3>Price: {{ food.price }} so'm</h3>
+                </div>
+                <button type="button" class="btn btn-success">Order</button>
+            </div>
+        </div>
+
+{% endblock %}

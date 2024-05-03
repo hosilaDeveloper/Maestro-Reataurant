@@ -1,0 +1,44 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!--{#    <h1 style="margin-top: 60px; margin-bottom: 40px">Categories</h1>#}-->
+<!--{#    {% for cat in categories %}#}-->
+<!--{##}-->
+<!--{#        <button type="button" class="btn btn-info"><a href="/menu/?c={{ cat }}">{{ cat.name }}</a></button>#}-->
+<!--{##}-->
+<!--{#    {% endfor %}#}-->
+    <h1 style="margin-top: 60px; margin-bottom: 60px">Menu</h1>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for food in foods %}
+        <div class="col">
+            <div class="card h-100">
+                <a href="{% url 'food_detail' food.id %}" style="color: black"><img src="{{ food.image.url }}" class="card-img-top" alt="..."></a>
+                <div class="card-body">
+                    <h5 class="card-title"><a href="{% url 'food_detail' food.id %}" style="color: black">{{ food.name }}</a></h5>
+                    <p class="card-text">{{ food.description }}</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">{{ food.created_at }}</small>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Category: {{ food.category }}</small>
+                </div>
+                <div class="card-footer">
+                    <h3>Price: {{ food.price }} so'm</h3>
+                </div>
+                <button type="button" style="margin-bottom: 60px" class="btn btn-success">Order</button>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+
+    <div>
+        <h1 style="color: black; margin-top: 60px; margin-bottom: 60px">Biz Xaqimizda</h1>
+        <img style="margin-top: 10px; margin-bottom: 20px; width: 90%" src="{{ about.image.url }}" alt="">
+        <h1 style="margin-top: 10px; margin-bottom: 20px">{{ about.name }}</h1>
+        <h3 style="margin-top: 10px; margin-bottom: 20px">{{ about.description }}</h3>
+        <h3 style="margin-top: 10px; margin-bottom: 20px; color: black">{{ about.location }}</h3>
+    </div>
+
+{% endblock %}
